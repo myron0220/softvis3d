@@ -17,11 +17,22 @@
 /// License along with this program; if not, write to the Free Software
 /// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
 ///
-
 import "reflect-metadata";
 import App from "./app";
 
-(window as any).softvis3d = {
-    app: App,
-    dev: {},
-};
+// (window as any).softvis3d = {
+//     app: App,
+//     dev: {},
+// };
+
+(function(App: any, entry: any) {
+  var softvis3d = new App({
+      baseUrl: "http://localhost:9000",
+      projectKey: "berry-free-react-admin-template",
+      isDev: true
+  });
+
+  softvis3d.run(entry);
+})(App, "app");
+
+console.log("!!!!!!!!!!!!!!");

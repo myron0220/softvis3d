@@ -12,7 +12,7 @@
         "module": "commonJS",
         "target": "es6",
         "jsx": "react",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
     },
     "compileOnSave": false,
     "files": [
@@ -28,5 +28,5 @@
         "src/**/*.ts",
         "src/**/*.tsx",
         "!node_modules/**"
-    ]
+    ],
 }

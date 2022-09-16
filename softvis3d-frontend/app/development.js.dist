@@ -1,9 +1,11 @@
+console.log("development.js OK!!!");
+
 (function(App, entry) {
     var softvis3d = new App({
-        baseUrl: "",
-        projectKey: "de.rinderle.softvis3d:softvis3d",
+        baseUrl: "http://localhost:9000/",
+        projectKey: "berry-free-react-admin-template",
         isDev: true
     });
 
     softvis3d.run(entry);
-})(window.softvis3d.app, "app");
+})(window.softvis3d.App, "app");

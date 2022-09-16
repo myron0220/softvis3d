@@ -68,6 +68,7 @@ export default class App {
     private readonly componentStatusStore: ComponentStatusStore;
 
     public constructor(config: AppConfiguration) {
+        console.log(config);
         this.componentStatusStore = new ComponentStatusStore(config);
         container
             .bind<ComponentStatusStore>("ComponentStatusStore")
