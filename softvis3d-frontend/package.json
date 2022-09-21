@@ -67,6 +67,7 @@
     "sass-loader": "^6.0.5",
     "three": "^0.127.0",
     "three-orbit-controls": "^82.1.0",
+    "three.meshline": "^1.4.0",
     "ts-node": "^3.1.0",
     "typescript": "^3.9.7",
     "webpack": "^4.46.0"
@@ -104,7 +105,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "mocha": {
-    "require": ["jsdom-global/register", "ts-node/register", "reflect-metadata"],
+    "require": [
+      "jsdom-global/register",
+      "ts-node/register",
+      "reflect-metadata"
+    ],
     "reporter": "spec",
     "spec": "test/**/*.spec.ts*",
     "file": "./test/setupEnzyme.ts"

@@ -25,6 +25,7 @@ import SceneStore from "../../../../stores/SceneStore";
 import { SoftVis3dMesh } from "../../domain/SoftVis3dMesh";
 import { SoftVis3dShape } from "../../domain/SoftVis3dShape";
 import { ObjectFactory } from "./ObjectFactory";
+import * as THREE from 'three';
 
 /**
  * @class This is a resource manager and loads individual models.
@@ -47,6 +48,45 @@ export class Wrangler {
         for (const object of this.objectsInView) {
             scene.add(object);
         }
+
+        // <--------- Myron TEST 1 meshline 2022 Sep 20 --------->        
+        // // create line
+        // const points = [];
+        // points.push( new THREE.Vector3( -600, 200, 0 ) ); // (x, z, y)
+        // points.push( new THREE.Vector3( 0, 400, 0 ) ); // (x, z, y)
+        // points.push( new THREE.Vector3( 600, 200, 0 ) ); // (x, z, y)
+        // const line = new MeshLine();
+        // line.setPoints(points);
+        
+        // // create material
+        // const material = new MeshLineMaterial({
+        //   color: 0x98BF64,
+        //   lineWidth: 5,
+        // });
+
+        // // create a mesh and add it to the scene
+        // const mesh = new THREE.Mesh(line, material);
+        // scene.add(mesh);
+
+        // <--------- Myron TEST 2 CubicBezierCurve3 2022 Sep 20 --------->  
+        // create geometry
+        const curve = new THREE.CubicBezierCurve3(
+          new THREE.Vector3(-600, 200, 0),
+          new THREE.Vector3(-300, 400, 0),
+          new THREE.Vector3(300, 400, 0),
+          new THREE.Vector3(600, 200, 0)
+        );
+        const points = curve.getPoints(50);
+        const geometry = new THREE.BufferGeometry().setFromPoints( points );
+        
+        // create material
+        const material = new THREE.LineBasicMaterial( { 
+          color: 0x98BF64,
+        } );
+        
+        // create object
+        const curveObject = new THREE.Line( geometry, material );
+        scene.add(curveObject);
     }
 
     public updateColorsWithUpdatedShapes(shapes: SoftVis3dShape[]) {
